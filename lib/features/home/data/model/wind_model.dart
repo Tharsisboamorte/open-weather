@@ -13,9 +13,4 @@ class WindModel extends Wind {
         deg: source?['deg'] as int,
       );
 
-  WindModel.fromMap(DataMap map)
-      : this(
-          deg: map['deg'] as int,
-          speed: map['speed'] as double,
-        );
 }

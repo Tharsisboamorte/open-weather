@@ -8,8 +8,4 @@ class CloudsModel extends Clouds {
   factory CloudsModel.fromJson(DataMap source) =>
       CloudsModel(all: source['all'] as int);
 
-  CloudsModel.fromMap(DataMap map)
-      : this(
-          all: map['all'] as int,
-        );
 }

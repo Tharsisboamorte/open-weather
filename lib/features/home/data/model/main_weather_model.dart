@@ -1,4 +1,3 @@
-import 'dart:convert';
 
 import 'package:logger/logger.dart';
 import 'package:open_weather/core/utils/typedef.dart';
@@ -29,15 +28,5 @@ class MainWeatherModel extends MainWeather {
       groundLevel: source?['grnd_level']as int,
     );
   }
-  MainWeatherModel.fromMap(DataMap map)
-      : this(
-          feelsLike: map['feels_like'] as double,
-          groundLevel: map['grnd_level'] as int,
-          humidity: map['humidity'] as int,
-          pressure: map['pressure'] as int,
-          seaLevel: map['sea_level'] as int,
-          temp: map['temp'] as double,
-          tempMax: map['temp_max'] as double,
-          tempMin: map['temp_min'] as double,
-        );
+
 }

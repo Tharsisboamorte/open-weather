@@ -17,11 +17,4 @@ class WeatherModel extends Weather {
         icon: source?['icon'] as String,
       );
 
-  WeatherModel.fromMap(DataMap map)
-      : this(
-          id: map['id'] as int,
-          main: map['main'] as String,
-          description: map['description'] as String,
-          icon: map['icon'] as String,
-        );
 }

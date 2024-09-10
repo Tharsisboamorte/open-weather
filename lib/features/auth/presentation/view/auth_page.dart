@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:open_weather/core/extensions/media_query_values.dart';
-import 'package:open_weather/core/res/app_values.dart';
+import 'package:open_weather/core/res/typography.dart';
 import 'package:open_weather/core/utils/constants/strings.dart';
 import 'package:open_weather/features/auth/presentation/cubit/auth_cubit.dart';
 import 'package:open_weather/features/auth/presentation/widget/default_button.dart';
-import 'package:open_weather/features/auth/presentation/widget/password_indicator.dart';
 import 'package:open_weather/features/auth/presentation/widget/text_form_field.dart';
+import 'package:open_weather/features/home/presentation/view/home_page.dart';
 
 class AuthScreen extends StatefulWidget {
   const AuthScreen({super.key});
@@ -26,6 +26,7 @@ class _AuthScreenState extends State<AuthScreen> {
           ScaffoldMessenger.of(context).showSnackBar(
             const SnackBar(content: Text('Login Successfully')),
           );
+          Navigator.of(context).pushNamed(HomeScreen.routeName);
         }
       },
       builder: (context, state) {
@@ -42,17 +43,18 @@ class _AuthScreenState extends State<AuthScreen> {
                 ),
               ),
               height: context.height * .6,
-              width: context.width * .6,
+              width: context.width * .4,
               child: Form(
                 key: cubit.formKey,
                 child: Column(
                   children: [
-                    const Padding(
+                    Padding(
                       padding: EdgeInsets.symmetric(
-                        vertical: AppValues.padding30,
+                        vertical: context.height * .03,
                       ),
                       child: Text(
                         Strings.login,
+                        style: AppTextStyle.instance.h1Bold,
                       ),
                     ),
                     AppTextFormField(
@@ -62,30 +64,25 @@ class _AuthScreenState extends State<AuthScreen> {
                       validator: cubit.validateEmail,
                     ),
                     SizedBox(
-                      height: context.width * .02,
+                      height: context.width * .03,
                     ),
                     AppTextFormField(
                       editingController: cubit.passwordController,
                       fieldLabel: Strings.password,
                       isPassword: true,
+                      validator: cubit.validatePassword,
                     ),
-                    // Padding(
-                    //   padding: const EdgeInsets.symmetric(
-                    //     horizontal: AppValues.padding30,
-                    //     vertical: AppValues.padding12,
-                    //   ),
-                    //   child: PasswordIndicator(
-                    //     passwordController: cubit.passwordController,
-                    //   ),
-                    // ),
                     SizedBox(
                       height: context.width * .01,
                     ),
                     Padding(
-                      padding: const EdgeInsets.symmetric(
-                        vertical: AppValues.padding23,
+                      padding: EdgeInsets.symmetric(
+                        horizontal: context.width * .07,
+                        vertical: context.height * .02,
                       ),
                       child: DefaultButton(
+                        height: context.height * .05,
+                        width: context.height * .64,
                         buttonLabel: Strings.login,
                         backgroundColor:
                             const WidgetStatePropertyAll(Colors.white10),

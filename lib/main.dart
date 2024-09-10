@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:open_weather/core/res/colors.dart';
 import 'package:open_weather/core/services/injection.dart';
 import 'package:open_weather/core/services/router.dart';
-import 'package:open_weather/features/home/presentation/cubit/home_cubit.dart';
-import 'package:open_weather/features/home/presentation/view/home_page.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -17,21 +15,17 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => sl<HomeCubit>(),
-      child: MaterialApp(
-        onGenerateRoute: generateRoute,
-        debugShowCheckedModeBanner: false,
-        theme: ThemeData(
-          visualDensity: VisualDensity.adaptivePlatformDensity,
-          appBarTheme: const AppBarTheme(
-            color: Colors.transparent,
-          ),
-          splashFactory: NoSplash.splashFactory,
-          colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-          useMaterial3: true,
+    return MaterialApp(
+      onGenerateRoute: generateRoute,
+      debugShowCheckedModeBanner: false,
+      theme: ThemeData(
+        visualDensity: VisualDensity.adaptivePlatformDensity,
+        appBarTheme: const AppBarTheme(
+          color: Colors.transparent,
         ),
-        home: const HomeScreen(),
+        splashFactory: NoSplash.splashFactory,
+        colorScheme: ColorScheme.fromSeed(seedColor: AppColors.primaryColor),
+        useMaterial3: true,
       ),
     );
   }

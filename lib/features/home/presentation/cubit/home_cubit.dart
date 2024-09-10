@@ -67,7 +67,6 @@ class HomeCubit extends Cubit<HomeState> {
             feelsLike: weather.main.feelsLike.toString(),
             temperature: weather.main.temp.toString(),
             weatherDescription: weather.weather.description,
-            weatherMain: weather.weather.main,
           ),
         );
       },

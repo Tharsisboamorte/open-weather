@@ -21,4 +21,7 @@ class Strings {
   static const newToCommunity = 'New to our community';
 
   static const invalidEmail = 'Please enter a valid email address.';
+
+  static const invalidPassword =
+      'Must contain:\n- at least 8 characters\n- one number\n- one special character.';
 }

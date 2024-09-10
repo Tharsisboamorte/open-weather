@@ -23,6 +23,7 @@ class WeatherCard extends StatelessWidget {
       height: context.height * .5,
       width: context.width * .5,
       child: Card(
+        color: Colors.white,
         child: Column(
           children: [
             SizedBox(

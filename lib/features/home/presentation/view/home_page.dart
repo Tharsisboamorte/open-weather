@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:open_weather/features/home/presentation/cubit/home_cubit.dart';
+import 'package:open_weather/features/home/presentation/widget/lodaing_card.dart';
 import 'package:open_weather/features/home/presentation/widget/weather_card.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
+
+  static const routeName = '/home';
 
   @override
   State<HomeScreen> createState() => _HomeScreenState();
@@ -27,14 +30,12 @@ class _HomeScreenState extends State<HomeScreen> {
         return Scaffold(
           backgroundColor: Colors.blueGrey,
           body: state is LoadingInfo
-              ? const Center(
-                  child: CircularProgressIndicator(),
-                )
+              ? const Center(child: LoadingCard())
               : state is LoadedWeather
                   ? Center(
                       child: WeatherCard(
                         temperature: state.temperature,
-                        weather: state.weatherMain,
+                        weather: state.weatherDescription,
                         icon: cubit.getIcon(state.weatherDescription),
                         feelsLike: state.feelsLike,
                       ),

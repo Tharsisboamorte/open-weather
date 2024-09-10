@@ -21,8 +21,11 @@ class AuthCubit extends Cubit<AuthState> {
   void authenticate() {
     final isEmailOk = emailController.text.isEmail;
     final isPasswordOk = passwordController.text.isPassword;
-    final isButtonEnabled = isEmailOk && isPasswordOk;
-    doLogin(validation: isButtonEnabled);
+    if (formKey.currentState!.validate()) {
+      formKey.currentState!.save();
+      final isButtonEnabled = isEmailOk && isPasswordOk;
+      doLogin(validation: isButtonEnabled);
+    }
   }
 
   String? validateEmail(String? value) {
@@ -30,6 +33,15 @@ class AuthCubit extends Cubit<AuthState> {
       return Strings.invalidEmail;
     } else if (value?.isEmpty ?? false) {
       return Strings.invalidEmail;
+    }
+    return null;
+  }
+
+  String? validatePassword(String? value) {
+    if (!(value ?? Strings.empty).isPassword) {
+      return Strings.invalidPassword;
+    } else if (value?.isEmpty ?? false) {
+      return Strings.invalidPassword;
     }
     return null;
   }
@@ -43,5 +55,4 @@ class AuthCubit extends Cubit<AuthState> {
 
   void togglePasswordVisibility() =>
       _isPasswordVisibleStream.add(!_isPasswordVisibleStream.value);
-
 }

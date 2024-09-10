@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:open_weather/core/res/app_values.dart';
+import 'package:open_weather/core/res/typography.dart';
 
 class AppTextFormField extends StatefulWidget {
   const AppTextFormField({
@@ -22,7 +23,7 @@ class AppTextFormField extends StatefulWidget {
 }
 
 class _AppTextFormFieldState extends State<AppTextFormField> {
-  bool isObscured = false;
+  bool isObscured = true;
 
   @override
   Widget build(BuildContext context) {
@@ -36,11 +37,14 @@ class _AppTextFormFieldState extends State<AppTextFormField> {
               horizontal: AppValues.padding8,
               vertical: AppValues.padding4,
             ),
-            child: Text(widget.fieldLabel),
+            child: Text(
+              widget.fieldLabel,
+              style: AppTextStyle.instance.body1Medium,
+            ),
           ),
           TextFormField(
             validator: widget.validator,
-            style: const TextStyle(),
+            style: AppTextStyle.instance.body1Medium,
             obscureText: widget.isPassword && isObscured,
             obscuringCharacter: '*',
             decoration: InputDecoration(
@@ -57,11 +61,12 @@ class _AppTextFormFieldState extends State<AppTextFormField> {
                     });
                   },
                   icon: isObscured
-                      ? const Icon(Icons.visibility_outlined)
-                      : const Icon(Icons.visibility_off_outlined),
+                      ? const Icon(Icons.visibility_off_outlined)
+                      : const Icon(Icons.visibility_outlined),
                 ),
               ),
               hintText: widget.hint,
+              hintStyle: AppTextStyle.instance.body1Regular,
               border: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(20),
                 borderSide: const BorderSide(color: Colors.grey),

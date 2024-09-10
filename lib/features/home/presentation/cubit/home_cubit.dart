@@ -14,9 +14,8 @@ class HomeCubit extends Cubit<HomeState> {
 
   final GetWeather _getWeather;
 
-
-  String getIcon(String weatherDescription){
-    switch(weatherDescription){
+  String getIcon(String weatherDescription) {
+    switch (weatherDescription) {
       case 'clear sky':
         return MediaRes.clearSky;
       case 'few clouds':
@@ -37,7 +36,6 @@ class HomeCubit extends Cubit<HomeState> {
         return MediaRes.fog;
     }
   }
-
 
   Future<void> getWeather() async {
     emit(const LoadingInfo());

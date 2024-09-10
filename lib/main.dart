@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:open_weather/core/services/injection.dart';
 import 'package:open_weather/core/services/router.dart';
-import 'package:open_weather/features/auth/presentation/cubit/auth_cubit.dart';
-import 'package:open_weather/features/auth/presentation/view/auth_page.dart';
+import 'package:open_weather/features/home/presentation/cubit/home_cubit.dart';
+import 'package:open_weather/features/home/presentation/view/home_page.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -18,7 +18,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => sl<AuthCubit>(),
+      create: (context) => sl<HomeCubit>(),
       child: MaterialApp(
         onGenerateRoute: generateRoute,
         debugShowCheckedModeBanner: false,
@@ -31,7 +31,7 @@ class MyApp extends StatelessWidget {
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
           useMaterial3: true,
         ),
-        home: const AuthScreen(),
+        home: const HomeScreen(),
       ),
     );
   }

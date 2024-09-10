@@ -1,9 +1,11 @@
 class Strings {
   const Strings._();
 
-  static const emailHint = 'base@mailhost.com';
+  static const empty = '';
 
-  static const login = 'Login';
+  static const emailHint = 'anonymous@email.com';
+
+  static const login = 'Sign In';
 
   static const signUp = 'Create an Account';
 
@@ -17,4 +19,6 @@ class Strings {
       'By continuing, you agree to the Terms of use and Privacy Policy.';
 
   static const newToCommunity = 'New to our community';
+
+  static const invalidEmail = 'Please enter a valid email address.';
 }

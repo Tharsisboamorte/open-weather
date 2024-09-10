@@ -8,5 +8,10 @@ Future<void> init() async {
 
 Future<void> _initAuth() async {
   sl
-  .registerFactory(AuthCubit.new);
+    ..registerFactory(AuthCubit.new)
+    ..registerFactory(() => HomeCubit(getWeather: sl()))
+    ..registerLazySingleton(() => GetWeather(sl()))
+    ..registerLazySingleton<HomeRepository>(() => HomeRepositoryImpl(sl()))
+    ..registerLazySingleton<HomeDataSource>(() => HomeDataSourceImpl(sl()))
+    ..registerLazySingleton(http.Client.new);
 }

@@ -2,14 +2,14 @@ part of 'router.dart';
 
 Route<dynamic> generateRoute(RouteSettings settings) {
   switch (settings.name) {
-    case '/':
+    case '/auth':
       return _pageBuilder(
         (context) {
           return BlocProvider(create: (_) => sl<AuthCubit>());
         },
         settings: settings,
       );
-    case '/home':
+    case '/':
       return _pageBuilder(
             (context) {
           return BlocProvider(create: (_) => sl<HomeCubit>());
